@@ -1,0 +1,401 @@
+[
+    {
+        "id": 1004856,
+        "name": "Samsung Smartphone",
+        "price": 130.76,
+        "category": "Electronics",
+        "popularity": 1124
+    },
+    {
+        "id": 1005115,
+        "name": "Apple Smartphone",
+        "price": 975.57,
+        "category": "Electronics",
+        "popularity": 948
+    },
+    {
+        "id": 1004767,
+        "name": "Samsung Smartphone",
+        "price": 254.77,
+        "category": "Electronics",
+        "popularity": 935
+    },
+    {
+        "id": 1004870,
+        "name": "Samsung Smartphone",
+        "price": 286.86,
+        "category": "Electronics",
+        "popularity": 620
+    },
+    {
+        "id": 1005105,
+        "name": "Apple Smartphone",
+        "price": 1415.48,
+        "category": "Electronics",
+        "popularity": 580
+    },
+    {
+        "id": 1307188,
+        "name": "Hp Notebook",
+        "price": 239.72,
+        "category": "Computers",
+        "popularity": 135
+    },
+    {
+        "id": 1307073,
+        "name": "Acer Notebook",
+        "price": 669.0,
+        "category": "Computers",
+        "popularity": 96
+    },
+    {
+        "id": 1307067,
+        "name": "Lenovo Notebook",
+        "price": 251.74,
+        "category": "Computers",
+        "popularity": 90
+    },
+    {
+        "id": 1306650,
+        "name": "Acer Notebook",
+        "price": 437.57,
+        "category": "Computers",
+        "popularity": 63
+    },
+    {
+        "id": 1307074,
+        "name": "Acer Notebook",
+        "price": 772.19,
+        "category": "Computers",
+        "popularity": 57
+    },
+    {
+        "id": 3600661,
+        "name": "Samsung Washer",
+        "price": 295.49,
+        "category": "Appliances",
+        "popularity": 121
+    },
+    {
+        "id": 3700926,
+        "name": "Samsung Vacuum",
+        "price": 64.08,
+        "category": "Appliances",
+        "popularity": 105
+    },
+    {
+        "id": 3600163,
+        "name": "Indesit Washer",
+        "price": 179.67,
+        "category": "Appliances",
+        "popularity": 90
+    },
+    {
+        "id": 6200315,
+        "name": "Elenberg Air Heater",
+        "price": 33.44,
+        "category": "Appliances",
+        "popularity": 77
+    },
+    {
+        "id": 3701134,
+        "name": "Bosch Vacuum",
+        "price": 105.28,
+        "category": "Appliances",
+        "popularity": 73
+    },
+    {
+        "id": 19200010,
+        "name": "Huter Saw",
+        "price": 84.66,
+        "category": "Construction",
+        "popularity": 43
+    },
+    {
+        "id": 12400121,
+        "name": "Alteco Drill",
+        "price": 45.82,
+        "category": "Construction",
+        "popularity": 29
+    },
+    {
+        "id": 12300396,
+        "name": "Drill",
+        "price": 51.46,
+        "category": "Construction",
+        "popularity": 28
+    },
+    {
+        "id": 4000169,
+        "name": "Tefal Generator",
+        "price": 90.07,
+        "category": "Construction",
+        "popularity": 25
+    },
+    {
+        "id": 27700660,
+        "name": "Pump",
+        "price": 99.33,
+        "category": "Construction",
+        "popularity": 21
+    },
+    {
+        "id": 6000094,
+        "name": "Starline Alarm",
+        "price": 121.24,
+        "category": "Auto",
+        "popularity": 100
+    },
+    {
+        "id": 5700619,
+        "name": "Jvc Player",
+        "price": 46.33,
+        "category": "Auto",
+        "popularity": 99
+    },
+    {
+        "id": 5701166,
+        "name": "Player",
+        "price": 136.4,
+        "category": "Auto",
+        "popularity": 74
+    },
+    {
+        "id": 6000227,
+        "name": "Starline Alarm",
+        "price": 157.53,
+        "category": "Auto",
+        "popularity": 56
+    },
+    {
+        "id": 4700630,
+        "name": "Videoregister",
+        "price": 30.86,
+        "category": "Auto",
+        "popularity": 50
+    },
+    {
+        "id": 17200570,
+        "name": "Sofa",
+        "price": 437.33,
+        "category": "Furniture",
+        "popularity": 36
+    },
+    {
+        "id": 13201002,
+        "name": "Bed",
+        "price": 161.91,
+        "category": "Furniture",
+        "popularity": 34
+    },
+    {
+        "id": 14701435,
+        "name": "Cabinet",
+        "price": 205.9,
+        "category": "Furniture",
+        "popularity": 34
+    },
+    {
+        "id": 17200651,
+        "name": "Sofa",
+        "price": 437.33,
+        "category": "Furniture",
+        "popularity": 30
+    },
+    {
+        "id": 16700605,
+        "name": "Zeta Chair",
+        "price": 16.19,
+        "category": "Furniture",
+        "popularity": 24
+    },
+    {
+        "id": 7005751,
+        "name": "Carriage",
+        "price": 79.46,
+        "category": "Kids",
+        "popularity": 27
+    },
+    {
+        "id": 7004492,
+        "name": "Belecoo Carriage",
+        "price": 102.46,
+        "category": "Kids",
+        "popularity": 25
+    },
+    {
+        "id": 7002254,
+        "name": "Wingoffly Carriage",
+        "price": 118.27,
+        "category": "Kids",
+        "popularity": 23
+    },
+    {
+        "id": 10400600,
+        "name": "Rastar Toys",
+        "price": 58.95,
+        "category": "Kids",
+        "popularity": 16
+    },
+    {
+        "id": 12100513,
+        "name": "Maomaoku Skates",
+        "price": 338.23,
+        "category": "Kids",
+        "popularity": 15
+    },
+    {
+        "id": 12201562,
+        "name": "Axis Bicycle",
+        "price": 95.24,
+        "category": "Sport",
+        "popularity": 32
+    },
+    {
+        "id": 26900008,
+        "name": "Housefit Trainer",
+        "price": 257.4,
+        "category": "Sport",
+        "popularity": 15
+    },
+    {
+        "id": 12202301,
+        "name": "Phoenix Bicycle",
+        "price": 205.9,
+        "category": "Sport",
+        "popularity": 11
+    },
+    {
+        "id": 12202160,
+        "name": "Bafang Bicycle",
+        "price": 1528.69,
+        "category": "Sport",
+        "popularity": 9
+    },
+    {
+        "id": 26900044,
+        "name": "Gf Trainer",
+        "price": 192.75,
+        "category": "Sport",
+        "popularity": 9
+    },
+    {
+        "id": 12900081,
+        "name": "Hp Cartrige",
+        "price": 7.7,
+        "category": "Stationery",
+        "popularity": 10
+    },
+    {
+        "id": 12900125,
+        "name": "Hp Cartrige",
+        "price": 11.3,
+        "category": "Stationery",
+        "popularity": 8
+    },
+    {
+        "id": 28401176,
+        "name": "Karya Bag",
+        "price": 100.39,
+        "category": "Accessories",
+        "popularity": 31
+    },
+    {
+        "id": 28400775,
+        "name": "Baden Bag",
+        "price": 61.52,
+        "category": "Accessories",
+        "popularity": 24
+    },
+    {
+        "id": 32900067,
+        "name": "Fisherman Bag",
+        "price": 27.29,
+        "category": "Accessories",
+        "popularity": 13
+    },
+    {
+        "id": 18300229,
+        "name": "Xiaomi Bag",
+        "price": 42.64,
+        "category": "Accessories",
+        "popularity": 12
+    },
+    {
+        "id": 28300595,
+        "name": "Karya Wallet",
+        "price": 46.33,
+        "category": "Accessories",
+        "popularity": 10
+    },
+    {
+        "id": 25800007,
+        "name": "Omron Tonometer",
+        "price": 51.43,
+        "category": "Medicine",
+        "popularity": 13
+    },
+    {
+        "id": 25800004,
+        "name": "Omron Tonometer",
+        "price": 87.49,
+        "category": "Medicine",
+        "popularity": 6
+    },
+    {
+        "id": 25800019,
+        "name": "Tonometer",
+        "price": 26.21,
+        "category": "Medicine",
+        "popularity": 5
+    },
+    {
+        "id": 25800003,
+        "name": "Omron Tonometer",
+        "price": 33.44,
+        "category": "Medicine",
+        "popularity": 4
+    },
+    {
+        "id": 28716983,
+        "name": "Respect Keds",
+        "price": 102.71,
+        "category": "Apparel",
+        "popularity": 38
+    },
+    {
+        "id": 28717851,
+        "name": "Shoes",
+        "price": 167.83,
+        "category": "Apparel",
+        "popularity": 38
+    },
+    {
+        "id": 28704388,
+        "name": "Asics Keds",
+        "price": 51.48,
+        "category": "Apparel",
+        "popularity": 24
+    },
+    {
+        "id": 28708392,
+        "name": "Strobbs Keds",
+        "price": 31.92,
+        "category": "Apparel",
+        "popularity": 20
+    },
+    {
+        "id": 28715975,
+        "name": "Adidas Keds",
+        "price": 111.84,
+        "category": "Apparel",
+        "popularity": 19
+    },
+    {
+        "id": 33700007,
+        "name": "Ventara Hammok",
+        "price": 228.52,
+        "category": "Country_Yard",
+        "popularity": 5
+    }
+]

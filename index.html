@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>premium Store</title>
+    <!-- Connected to external style.css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 1. NAVIGATION -->
+<nav>
+    <div class="brand">🛒 Premium<span style="color:var(--accent)">Store</span></div>
+    <div class="user-panel">
+        👤 Logged in as: <strong>User #999999</strong> (New Session)
+    </div>
+</nav>
+
+<div class="main-container">
+    
+    <!-- 2. SIDEBAR CATEGORIES -->
+    <div class="sidebar">
+        <h4>Departments</h4>
+        <div id="category-list">
+            <!-- JS will populate this -->
+        </div>
+    </div>
+
+    <!-- 3. MAIN PRODUCT GRID -->
+    <div class="content">
+        <h2 class="section-title" id="page-title">All Products</h2>
+        <div class="grid" id="product-grid">
+            <!-- JS will populate cards here -->
+        </div>
+    </div>
+
+    <!-- 4. RECOMMENDATION PANEL -->
+    <div class="rec-sidebar">
+        <h3 style="margin-top:0; font-size:1.1rem;">🔮 Recommended For You</h3>
+        <p style="font-size:0.8rem; color:#7f8c8d;" id="rec-status">Based on popular items...</p>
+        <div id="rec-list">
+            <!-- Recs go here -->
+            <div style="padding:20px; text-align:center; color:#ccc;">Loading...</div>
+        </div>
+        <button class="btn btn-view" style="width:100%; margin-top:10px;" onclick="fetchRecommendations()">Refresh</button>
+    </div>
+
+</div>
+
+<!-- 5. ENGINEERING FOOTER -->
+<footer>
+    <div class="dev-controls">
+        <div>
+            <strong>Engineering Console</strong><br>
+            <small>Backend Simulation Control</small>
+        </div>
+        <button class="btn-retrain" onclick="triggerRetrain()">🔄 Trigger Nightly Retrain</button>
+    </div>
+    <div id="status-log">System Ready. Waiting for interactions...</div>
+</footer>
+
+<script>
+    // --- 1. THE DATA (Your provided inventory) ---
+    const inventory = [
+        { "id": 1004856, "name": "Samsung Smartphone", "price": 130.76, "category": "Electronics" },
+        { "id": 1005115, "name": "Apple Smartphone", "price": 975.57, "category": "Electronics" },
+        { "id": 1004767, "name": "Samsung Smartphone", "price": 254.77, "category": "Electronics" },
+        { "id": 1004870, "name": "Samsung Smartphone", "price": 286.86, "category": "Electronics" },
+        { "id": 1005105, "name": "Apple Smartphone", "price": 1415.48, "category": "Electronics" },
+        { "id": 1307188, "name": "Hp Notebook", "price": 239.72, "category": "Computers" },
+        { "id": 1307073, "name": "Acer Notebook", "price": 669.0, "category": "Computers" },
+        { "id": 1307067, "name": "Lenovo Notebook", "price": 251.74, "category": "Computers" },
+        { "id": 3600661, "name": "Samsung Washer", "price": 295.49, "category": "Appliances" },
+        { "id": 3700926, "name": "Samsung Vacuum", "price": 64.08, "category": "Appliances" },
+        { "id": 6200315, "name": "Elenberg Air Heater", "price": 33.44, "category": "Appliances" },
+        { "id": 6000094, "name": "Starline Alarm", "price": 121.24, "category": "Auto" },
+        { "id": 5700619, "name": "Jvc Player", "price": 46.33, "category": "Auto" },
+        { "id": 17200570, "name": "Sofa", "price": 437.33, "category": "Furniture" },
+        { "id": 13201002, "name": "Bed", "price": 161.91, "category": "Furniture" },
+        { "id": 7005751, "name": "Carriage", "price": 79.46, "category": "Kids" },
+        { "id": 10400600, "name": "Rastar Toys", "price": 58.95, "category": "Kids" },
+        { "id": 12201562, "name": "Axis Bicycle", "price": 95.24, "category": "Sport" },
+        { "id": 26900008, "name": "Housefit Trainer", "price": 257.4, "category": "Sport" },
+        { "id": 28401176, "name": "Karya Bag", "price": 100.39, "category": "Accessories" },
+        { "id": 4804056, "name": "Apple Headphone", "price": 161.94, "category": "Accessories" },
+        { "id": 25800007, "name": "Omron Tonometer", "price": 51.43, "category": "Medicine" },
+        { "id": 28716983, "name": "Respect Keds", "price": 102.71, "category": "Apparel" }
+    ];
+
+    // Config
+    const USER_ID = 999990;
+    const API_URL = "http://127.0.0.1:8000"; 
+
+    // --- 2. INITIALIZATION ---
+    function init() {
+        renderCategories();
+        renderProducts("All"); // Show all initially
+        fetchRecommendations(); // Try to get initial recs
+    }
+
+    // --- 3. RENDER FUNCTIONS ---
+    function renderCategories() {
+        const cats = [...new Set(inventory.map(i => i.category))]; // Get unique cats
+        const list = document.getElementById('category-list');
+        
+        let html = `<div class="cat-link active" onclick="filterCat('All', this)">All Products</div>`;
+        cats.forEach(c => {
+            html += `<div class="cat-link" onclick="filterCat('${c}', this)">${c}</div>`;
+        });
+        list.innerHTML = html;
+    }
+
+    function filterCat(category, element) {
+        // Highlight active link
+        document.querySelectorAll('.cat-link').forEach(el => el.classList.remove('active'));
+        element.classList.add('active');
+        
+        document.getElementById('page-title').innerText = category === 'All' ? "All Products" : category;
+        renderProducts(category);
+    }
+
+    function renderProducts(category) {
+        const grid = document.getElementById('product-grid');
+        grid.innerHTML = "";
+
+        const items = category === "All" 
+            ? inventory 
+            : inventory.filter(i => i.category === category);
+
+        items.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "card";
+            // ADDED CART BUTTON HERE
+            card.innerHTML = `
+                <div>
+                    <div class="card-cat">${item.category}</div>
+                    <div class="card-title">${item.name}</div>
+                    <div class="card-price">$${item.price}</div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-view" onclick="logAction(${item.id}, 'view')">👁️ View</button>
+                    <button class="btn btn-cart" onclick="logAction(${item.id}, 'cart')">🛒 Cart</button>
+                    <button class="btn btn-buy" onclick="logAction(${item.id}, 'purchase')">💰 Buy</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // --- 4. BACKEND CONNECTION ---
+    
+    async function logAction(pid, type) {
+        console.log(`Sending: ${type} on item ${pid}`);
+        try {
+            const res = await fetch(`${API_URL}/log_action`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({user_id: USER_ID, product_id: pid, event_type: type})
+            });
+            const data = await res.json();
+            document.getElementById('status-log').innerText = `✅ Logged: ${type} (Item ${pid}). Total Session Events: ${data.total_logs}`;
+        } catch (e) {
+            document.getElementById('status-log').innerText = "⚠️ Backend Disconnected (Check main.py)";
+        }
+    }
+
+    async function triggerRetrain() {
+        const status = document.getElementById('status-log');
+        status.innerText = "⏳ Running Batch Pipeline... (Merging Logs & Retraining)";
+        status.style.color = "#f1c40f"; // Yellow
+
+        try {
+            const res = await fetch(`${API_URL}/trigger_retrain`, {method: 'POST'});
+            const data = await res.json();
+            status.innerText = `✅ Pipeline Complete in ${data.duration}. Model Updated.`;
+            status.style.color = "#2ecc71"; // Green
+            fetchRecommendations(); // Refresh UI immediately
+        } catch (e) {
+            status.innerText = "❌ Retrain Failed. Is Python running?";
+            status.style.color = "#e74c3c";
+        }
+    }
+
+    async function fetchRecommendations() {
+        const list = document.getElementById('rec-list');
+        const status = document.getElementById('rec-status');
+        
+        try {
+            const res = await fetch(`${API_URL}/recommend/${USER_ID}`);
+            const data = await res.json();
+            
+            // Update Strategy Label
+            status.innerText = data.type.includes("Popular") ? "Strategy: Global Popularity (Cold Start)" : "Strategy: Personalized (ALS)";
+            
+            // Render Items
+            let html = "";
+            if(data.items.length === 0) {
+                html = "<div class='rec-item'>No Data</div>";
+            } else {
+                data.items.forEach(item => {
+                    // Handle simple string response or object response
+                    const name = item.name || item; 
+                    const cat = item.category || "General";
+                    html += `
+                    <div class="rec-item">
+                        <span class="rec-name">${name}</span>
+                        <span class="rec-meta">${cat}</span>
+                    </div>`;
+                });
+            }
+            list.innerHTML = html;
+
+        } catch (e) {
+            list.innerHTML = "<div style='padding:10px; color:red; font-size:0.8rem'>Backend Offline</div>";
+        }
+    }
+
+    // Start App
+    init();
+
+</script>
+
+</body>
+</html>
