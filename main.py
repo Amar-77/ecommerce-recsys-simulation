@@ -62,7 +62,7 @@ def train_model():
             print(f"⚠️ Error reading logs: {e}")
 
     # 3. Update Product Lookup
-    print("   -> Indexing Products...")
+    print("   -> Indexing Products....")
     product_lookup = {}
     for _, row in df.iterrows():
         pid = int(row['product_id'])
@@ -75,7 +75,7 @@ def train_model():
             product_lookup[pid] = {"name": f"{brand} {cat}".strip(), "price": price, "category": cat}
 
     # 4. Build Matrix
-    print("   -> Building Matrix...")
+    print("   -> Building Matrix....")
     df['user_idx'] = df['user_id'].astype("category").cat.codes
     df['product_idx'] = df['product_id'].astype("category").cat.codes
     
@@ -90,7 +90,7 @@ def train_model():
     ).tocsr()
     
     # 5. Train
-    print("   -> Training Model...")
+    print("   -> Training Model....")
     model = implicit.als.AlternatingLeastSquares(factors=32, iterations=10, random_state=42)
     model.fit(train_matrix * 10)
     print("✅ Model Updated & Ready!")
