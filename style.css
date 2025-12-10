@@ -180,7 +180,7 @@ nav {
 }
 
 .btn-cart:hover {
-    background: #d35400;
+    background: #c24e01ff;
 }
 
 .btn-buy {
@@ -189,7 +189,7 @@ nav {
 }
 
 .btn-buy:hover {
-    background: #2980b9;
+    background: #2775a9ff;
 }
 
 /* --- RECOMMENDATION BAR (Right Side) --- */
